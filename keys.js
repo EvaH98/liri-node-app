@@ -1,7 +1,6 @@
 require("dotenv").config();
 console.log('this is loaded');
 
-console.log(TWITTER_CONSUMER_KEY);
 
 
 exports.twitter = {
