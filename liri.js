@@ -14,14 +14,19 @@ var argument = inputString[3];
 
 
 
+function showTweets () {
+	if (operand = "my-tweets"){
+		return myTweets();
+	};
 
-if (operand = "my-tweets"){
-	return myTweets();
 };
 
-if (operand = "spotify-this-song" + argument){
-	return spotifySong()
+function showSpotify() {
+	if (operand = "spotify-this-song" + argument){
+		return spotifySong()
+	};
 }
+
 
 function myTweets (){
 	var params = {screen_name: '4iamlight', count: 20, exclude_replies:true, trim_user:true};
@@ -46,12 +51,16 @@ function spotifySong(){
     			var songData = data.tracks.items[i];
 
     			console.log("Artist: " + songData.artists[0].name);
-    			console.log("Song: " _ songData.name);
+    			console.log("Song: " + songData.name);
     			console.log("Preview URL: " + songData.preview_url);
-    			console.log()
+    			console.log("Album: " + songData.album.name);
+    			console.log('----------------------------------------');
     		}
   		}
  
 });
-}
+};
+
+showTweets();
+showSpotify();
 
