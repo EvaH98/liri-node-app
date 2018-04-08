@@ -10,25 +10,48 @@ var client = new Twitter(keys.twitter);
 
 var inputString = process.argv;
 var operand = inputString[2];
+var argument = inputString[3];
+
+
 
 
 if (operand = "my-tweets"){
-	var params = {screen_name: '4iamlight'};
+	return myTweets();
+};
+
+if (operand = "spotify-this-song" + argument){
+	return spotifySong()
+}
+
+function myTweets (){
+	var params = {screen_name: '4iamlight', count: 20, exclude_replies:true, trim_user:true};
 	client.get('statuses/user_timeline', params, function(error, tweets, response) {
   		
   		if (!error) {
-    		console.log(JSON.stringify(tweets, null, 2));
+    		for(i=0; i<tweets.length; i++){
+    			var date = tweets[i].created_at;
+    			console.log("@4iamlight: " + tweets[i].text + " Created At: " + date.substring(0, 19));
+    			console.log('----------------------------------------')
+    		}
+  		} else {
+  			console.log(error);
   		}
-	});
-};
-
-if (operand = "spotify-this-song"){
-	var song = inputString[3];
-	spotify.search({ type: 'track', query: song }, function(err, data) {
-  		if (err) {
-    		return console.log('Error occurred: ' + err);
-  		}
- 
-		console.log(JSON.stringify(data, null, 2)); 
 	});
 }
+
+function spotifySong(){
+	spotify.search({ type: 'track', query: argument }, function(err, data) {
+  		if (!err) {
+    		for(var i=0; i<data.tracks.items.length; i++){
+    			var songData = data.tracks.items[i];
+
+    			console.log("Artist: " + songData.artists[0].name);
+    			console.log("Song: " _ songData.name);
+    			console.log("Preview URL: " + songData.preview_url);
+    			console.log()
+    		}
+  		}
+ 
+});
+}
+
