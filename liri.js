@@ -14,18 +14,13 @@ var argument = inputString[3];
 
 
 
-function showTweets () {
-	if (operand = "my-tweets"){
-		return myTweets();
-	};
 
-};
-
-function showSpotify() {
-	if (operand = "spotify-this-song" + argument){
-		return spotifySong()
-	};
+if (operand === "my-tweets"){
+	return myTweets();
+} else if (operand === "spotify-this-song"){
+	return spotifySong()
 }
+
 
 
 function myTweets (){
@@ -61,6 +56,4 @@ function spotifySong(){
 });
 };
 
-showTweets();
-showSpotify();
 
