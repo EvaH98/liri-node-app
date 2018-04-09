@@ -21,6 +21,8 @@ if (operand === "my-tweets"){
 	return spotifySong();
 } else if (operand === "movie-this"){
 	return movieThis();
+} else if(operand === "do-what-it-says"){
+	return doWhat();
 }
 
 
@@ -80,6 +82,17 @@ function movieThis() {
     	console.log("Actors: " + JSON.parse(body).Actors);
     	console.log('----------------------------------------');
   		}
+	});
+};
+
+function doWhat () {
+	fs.readFile("./random.txt", "utf8", function(err, data){
+		if(err){
+			return console.log(err);
+		}
+		console.log('----------------------------------------');
+		console.log(data);
+		console.log('----------------------------------------');
 	});
 };
 
